@@ -139,7 +139,7 @@ bkcore.hexgl.ShipControls = function(domElement)
 		switch(event.keyCode) 
 		{
 			case 38: /*up*/	self.key.forward = false; break;
-
+ 
 			case 40: /*down*/self.key.backward = false; break;
 
 			case 37: /*left*/self.key.left = false; break;
@@ -154,8 +154,23 @@ bkcore.hexgl.ShipControls = function(domElement)
 		}
 	};
 
-	domElement.addEventListener('keydown', onKeyDown, false);
-	domElement.addEventListener('keyup', onKeyUp, false);
+	// domElement.addEventListener('keydown', onKeyDown, false);
+	// domElement.addEventListener('keyup', onKeyUp, false);
+
+	Leap.loop(function(frame) {
+	 	
+	 	if (frame.valid && frame.hands[0]) {		
+			var t = frame.hands[0].palmPosition;
+			self.key.forward = t[2] < 50 ? true : false;
+			self.key.left = t[0] < -25 ? true : false;
+			self.key.right = t[0] > 25 ? true : false;
+	 	} else {
+	 		self.key.left = 
+			self.key.right = 
+			self.key.forward = 
+			self.key.backward = false;
+	 	}
+	})
 };
 
 bkcore.hexgl.ShipControls.prototype.control = function(threeMesh)
