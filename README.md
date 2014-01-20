@@ -1,7 +1,7 @@
 HexGL
 =========
 
-Source code of [HexGL](http://hexgl.bkcore.com), the futuristic HTML5 racing game by [Thibaut Despoulain](http://bkcore.com)
+Source code of [HexGL](http://hexgl.bkcore.com), the futuristic HTML5 racing game by [Thibaut Despoulain](http://bkcore.com) with LeapMotion integration.
 
 ## Branches
   * **[Master](https://github.com/BKcore/HexGL)** - Public release (stable), same version as on the website.
