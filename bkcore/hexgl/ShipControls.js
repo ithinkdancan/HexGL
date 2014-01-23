@@ -20,11 +20,11 @@ bkcore.hexgl.ShipControls = function(domElement)
 
 	this.epsilon = 0.00000001;
 	this.zero = new THREE.Vector3(0,0,0);
-	this.airResist = 0.02;
+	this.airResist = 0.2;
 	this.airDrift = 0.1;
-	this.thrust = 0.02;
+	this.thrust = 0;
 	this.airBrake = 0.02;
-	this.maxSpeed = 7.0;
+	this.maxSpeed = 1.0;
 	this.boosterSpeed = this.maxSpeed * 0.4;
 	this.boosterDecay = 0.01;
 	this.angularSpeed = 0.005;
@@ -34,10 +34,10 @@ bkcore.hexgl.ShipControls = function(domElement)
 	this.repulsionLerp = 0.1;
 	this.collisionSpeedDecrease = 0.8;
 	this.collisionSpeedDecreaseCoef = 0.8;
-	this.maxShield = 1.0;
+	this.maxShield = 8.0;
 	this.shieldDelay = 60;
 	this.shieldTiming = 0;
-	this.shieldDamage = 0.25;
+	this.shieldDamage = 0.001;
 	this.driftLerp = 0.35;
 	this.angularLerp = 0.35;
 
@@ -164,9 +164,13 @@ bkcore.hexgl.ShipControls = function(domElement)
 			self.key.forward = t[2] < 50 ? true : false;
 			self.key.left = t[0] < -25 ? true : false;
 			self.key.right = t[0] > 25 ? true : false;
+			// self.key.ltrigger = t[0] < -50 ? true : false;
+			// self.key.rtrigger = t[0] > 50 ? true : false;
 	 	} else {
-	 		self.key.left = 
+	 		self.key.left =
+	 		self.key.ltrigger = 
 			self.key.right = 
+			self.key.rtrigger =
 			self.key.forward = 
 			self.key.backward = false;
 	 	}
